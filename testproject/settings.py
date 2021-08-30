@@ -41,8 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
 
-    'blog'
+    'blog',
+    'taggit'
 ]
+
+INSTALLED_APPS += ('django_summernote', )
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -136,5 +139,5 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 django_heroku.settings(locals())

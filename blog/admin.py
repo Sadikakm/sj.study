@@ -1,16 +1,38 @@
 from django.contrib import admin
-
-from .models import Post
+from .models import Post,Comment,Category
+from django_summernote.admin import SummernoteModelAdmin
 # Register your models here.
 
-class PostAdmin(admin.ModelAdmin):
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = [
+        'name',
+         'slug'
+    ]
+    prepopulated_fields = {'slug': ('name',)}
+
+class PostAdmin(SummernoteModelAdmin):
     list_display =[
         'title',
         'description',
         'short_description',
         'creation',
     ]
+    summernote_fields = ('description',)
 
 admin.site.register(Post, PostAdmin)
+
+
+
+class CommentAdmin(admin.ModelAdmin):
+    
+     list_display = [
+        'name',
+        'body'
+      
+    ]
+
+admin.site.register(Comment, CommentAdmin)
 
 
